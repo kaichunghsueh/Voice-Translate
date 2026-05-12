@@ -16,6 +16,7 @@ import { ABCompare } from '@/components/ABCompare';
 import { pushHistory } from '@/lib/history';
 import { cn } from '@/lib/utils';
 import { VOICES, type VoiceId } from '@/lib/voices';
+import { costLabel } from '@/lib/cost';
 
 type Mode = 'single' | 'ab';
 
@@ -199,7 +200,7 @@ export default function Home() {
                 <ClipPlayer
                   audioUrl={latest.url}
                   filename={`voice-${voiceLabel(latest.voice)}-${latest.id}.mp3`}
-                  label={`最新 · ${voiceLabel(latest.voice)}`}
+                  label={`最新 · ${voiceLabel(latest.voice)} · ${latest.text.length} 字 · ${costLabel(latest.text.length)}`}
                   subLabel={latest.text}
                   onDelete={() => deleteClip(latest.id)}
                 />
@@ -210,7 +211,7 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-sm font-medium">
                       <ListMusic className="h-4 w-4 text-primary" />
-                      歷史片段 · {older.length}
+                      歷史片段 · {older.length} · 累計 {costLabel(older.reduce((s, c) => s + c.text.length, 0))}
                     </div>
                     <Button
                       variant="ghost"
@@ -227,7 +228,7 @@ export default function Home() {
                         key={c.id}
                         audioUrl={c.url}
                         filename={`voice-${voiceLabel(c.voice)}-${c.id}.mp3`}
-                        label={`#${clips.length - i - 1} · ${voiceLabel(c.voice)} · 語速 ${c.rate.toFixed(2)}x · 音調 ${c.pitch >= 0 ? '+' : ''}${c.pitch}%`}
+                        label={`#${clips.length - i - 1} · ${voiceLabel(c.voice)} · 語速 ${c.rate.toFixed(2)}x · 音調 ${c.pitch >= 0 ? '+' : ''}${c.pitch}% · ${c.text.length} 字 · ${costLabel(c.text.length)}`}
                         subLabel={c.text}
                         compact
                         onDelete={() => deleteClip(c.id)}
