@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.github
+.azure
+*.log
+*.mp3
+.env
+.env.local
+.env*.local
+.DS_Store
+README.md
+PROMPT.md
+infra
+sample.mp3
+ui-test.mp3
+inj.mp3

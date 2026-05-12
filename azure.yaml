@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+name: voice-translate
+metadata:
+  template: voice-translate@1.0.0
+services:
+  web:
+    project: .
+    language: ts
+    host: containerapp
+    docker:
+      path: Dockerfile
+      context: .
+infra:
+  provider: bicep
+  path: infra
+  module: main
+hooks:
+  postprovision:
+    windows:
+      shell: pwsh
+      run: |
+        Write-Host "Provision complete. Endpoints:"
+        Write-Host "  AI Services : $env:AZURE_AISERVICES_ENDPOINT"
+        Write-Host "  Container App: $env:AZURE_CONTAINER_APP_FQDN"
+    posix:
+      shell: sh
+      run: |
+        echo "Provision complete."
+        echo "  AI Services : $AZURE_AISERVICES_ENDPOINT"
+        echo "  Container App: $AZURE_CONTAINER_APP_FQDN"
