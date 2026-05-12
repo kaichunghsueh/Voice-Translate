@@ -1,20 +1,21 @@
-node_modules
-.next
-out
+
+.acr-*.log
+.azd-*.log
+.azd-provision.log
+.azure/
+.build-tag
+.DS_Store
 .env
 .env.local
 .env*.local
-*.log
-.azd-provision.log
-.DS_Store
-.azure/
-# Local TTS smoke test artifacts
-*.mp3
-
-# Build/deploy artifacts
-.build-tag
-.acr-*.log
-.azd-*.log
+.next
 .next-dev.log
+*.app-token
+*.build-tag
+*.log
+*.mp3
+# Build/deploy artifacts
+# Local TTS smoke test artifacts
+node_modules
+out
 tsconfig.tsbuildinfo
-

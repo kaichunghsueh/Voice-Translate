@@ -59,7 +59,10 @@ export function ABCompare({ text, experimentId = 'default' }: Props) {
     try {
       const res = await fetch('/api/tts', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+          ...(process.env.NEXT_PUBLIC_APP_TOKEN ? { 'x-app-token': process.env.NEXT_PUBLIC_APP_TOKEN } : {})
+        },
         body: JSON.stringify({ ...cfg, text, variant, experimentId })
       });
       if (!res.ok) {
@@ -97,7 +100,10 @@ export function ABCompare({ text, experimentId = 'default' }: Props) {
     try {
       await fetch('/api/ab/vote', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+          ...(process.env.NEXT_PUBLIC_APP_TOKEN ? { 'x-app-token': process.env.NEXT_PUBLIC_APP_TOKEN } : {})
+        },
         body: JSON.stringify({
           experimentId,
           winner: w,

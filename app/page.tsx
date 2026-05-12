@@ -65,7 +65,10 @@ export default function Home() {
     try {
       const res = await fetch('/api/tts', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+          ...(process.env.NEXT_PUBLIC_APP_TOKEN ? { 'x-app-token': process.env.NEXT_PUBLIC_APP_TOKEN } : {})
+        },
         body: JSON.stringify({ text, voice, rate, pitch })
       });
       if (!res.ok) {
