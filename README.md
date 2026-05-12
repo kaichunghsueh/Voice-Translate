@@ -100,6 +100,8 @@ npm run dev
 
 ## ☁️ 部署到 Azure
 
+> 完整佈署手冊(含手動 CLI、滾動更新、回滾、CI/CD、疑難排解):**[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**
+
 ### 用 azd(一鍵)
 
 ```powershell
