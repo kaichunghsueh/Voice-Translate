@@ -89,10 +89,12 @@ export function ClipPlayer({
     >
       {(label || subLabel) && (
         <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             {label && <div className="truncate text-sm font-medium">{label}</div>}
             {subLabel && (
-              <div className="truncate text-xs text-muted-foreground">{subLabel}</div>
+              <div className="line-clamp-2 break-words text-xs text-muted-foreground">
+                {subLabel}
+              </div>
             )}
           </div>
         </div>

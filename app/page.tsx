@@ -182,8 +182,8 @@ export default function Home() {
         </div>
 
         {mode === 'single' ? (
-          <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-            <div className="space-y-5">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="min-w-0 space-y-5">
               <TextInputArea value={text} onChange={setText} disabled={loading} />
               {error && (
                 <Card className="border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
@@ -238,7 +238,7 @@ export default function Home() {
               )}
             </div>
 
-            <aside className="space-y-5">
+            <aside className="min-w-0 space-y-5">
               <Card className="p-5">
                 <VoicePicker value={voice} onChange={setVoice} disabled={loading} />
               </Card>

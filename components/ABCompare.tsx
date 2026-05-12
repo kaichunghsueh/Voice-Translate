@@ -130,7 +130,7 @@ export function ABCompare({ text, experimentId = 'default' }: Props) {
         </span>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 [&>*]:min-w-0">
         <VariantPanel
           label="A"
           accent="from-primary to-fuchsia-500"
